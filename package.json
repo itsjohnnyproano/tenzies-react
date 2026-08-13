@@ -13,7 +13,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "nanoid": "^5.0.7",
-    "react-confetti": "^6.1.0"
+    "react-confetti": "^6.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
