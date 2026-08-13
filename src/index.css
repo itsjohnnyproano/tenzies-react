@@ -89,3 +89,16 @@ button.roll-dice {
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: 480px) {
+  .dice-container {
+    gap: 14px;
+    padding-inline: 12px;
+  }
+
+  .dice-container button {
+    height: 44px;
+    width: 44px;
+    font-size: 1.6rem;
+  }
+}
