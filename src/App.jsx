@@ -118,6 +118,18 @@ export default function App() {
     );
   }
 
+  function showMessage() {
+    if (gameWon) {
+      return "You Won!";
+    }
+
+    if (gameStarted) {
+      return "Keep going!";
+    }
+
+    return "Ready to play?";
+  }
+
   const diceElements = dice.map((dieObj) => (
     <Die key={dieObj.id} value={dieObj.value} isHeld={dieObj.isHeld} hold={() => hold(dieObj.id)} />
   ));
@@ -165,8 +177,13 @@ export default function App() {
         </div>
 
         <div className="dice-container-wrapper">
-          <p className="dice-subtitle">The Dice</p>
-          <p className="dice-subtitle-2">Tap to freeze a value</p>
+          <div className="dice-subtitle-message-wrapper">
+            <div>
+              <p className="dice-subtitle">The Dice</p>
+              <p className="dice-subtitle-2">Tap to freeze a value</p>
+            </div>
+            <p className={gameWon ? "win-message" : ""}>{showMessage()}</p>
+          </div>
           <div className="dice-container">{diceElements}</div>
         </div>
         <button ref={buttonRef} className="roll-dice" onClick={rollDice}>
