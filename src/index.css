@@ -19,6 +19,11 @@ header {
   margin-top: 4rem;
 }
 
+img {
+  width: 100%;
+  margin: 0 0 0 1rem;
+}
+
 header > h1 {
   color: white;
   font-size: 40px;
@@ -77,6 +82,14 @@ main {
   font-weight: 400;
   margin: 0 auto;
   text-align: start;
+  color: #F3F0FF
+}
+
+
+.keeper-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 auto;
 }
 
 .timer {
@@ -180,7 +193,7 @@ button.roll-dice {
   }
 
   .timer {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   button.roll-dice {

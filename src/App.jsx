@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import tenzieslogo2 from "/src/assets/tenzieslogo2.svg";
 
 function formatTime(totalSeconds) {
   const minutes = Math.floor(totalSeconds / 60);
@@ -12,6 +13,7 @@ function formatTime(totalSeconds) {
 export default function App() {
   const [dice, setDice] = useState(() => generateAllNewDice());
   const [time, setTime] = useState(0);
+  const [attempts, setAttempts] = useState(0);
   const [bestTime, setBestTime] = useState(() => {
     const stored = localStorage.getItem("bestTime");
     return stored ? Number(stored) : null;
@@ -48,15 +50,32 @@ export default function App() {
   function rollDice() {
     if (!gameWon) {
       if (!gameStarted) setGameStarted(true);
-      setDice((oldDice) => oldDice.map((die) => (die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) })));
+
+      setAttempts((prevAttempts) => prevAttempts + 1);
+
+      setDice((oldDice) =>
+        oldDice.map((die) =>
+          die.isHeld
+            ? die
+            : {
+                ...die,
+                value: Math.ceil(Math.random() * 6),
+              }
+        )
+      );
     } else {
       setDice(generateAllNewDice());
       setTime(0);
+      setAttempts(0);
       setGameStarted(false);
     }
   }
 
   function hold(id) {
+    if (!gameStarted) {
+      setGameStarted(true);
+    }
+
     const newDice = dice.map((die) => (die.id === id ? { ...die, isHeld: !die.isHeld } : die));
 
     const won =
@@ -83,8 +102,10 @@ export default function App() {
     <>
       <header>
         <p className="subtitle">Roll to win!</p>
-        <p className="subtitle">Match all dice and beat your best time!</p>
-        <h1 className="title">Tenzies</h1>
+        <p className="subtitle">
+          Match all the dice! <br></br> Beat your best time!
+        </p>
+        <img src={tenzieslogo2}></img>
       </header>
 
       <main>
@@ -102,15 +123,20 @@ export default function App() {
         <div className="keeper-display">
           <div className="best-time">
             <p className="keeper-subtitle">Best:</p>
-            {bestTime !== null && <p>{bestTime}s</p>}
+            {bestTime !== null && <p className="keeper-text">{bestTime}s</p>}
           </div>
           <div className="timer">
             <p className="keeper-subtitle">Time:</p>
-            {gameStarted && <p aria-live="polite">{formatTime(time)}</p>}
+            <p className="" aria-live="polite">
+              {formatTime(time)}
+            </p>
           </div>
           <div className="attempt">
             <p className="keeper-subtitle" aria-live="polite">
               Attempts:
+            </p>
+            <p className="keeper-text" aria-live="polite">
+              {attempts}
             </p>
           </div>
         </div>

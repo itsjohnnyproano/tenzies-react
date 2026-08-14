@@ -1,0 +1,13 @@
+<svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Tenzies logo (on blue)</title>
+  <desc>Wordmark reading TENZIES in white bold type with the Z accented in pink, paired with a matching pink die icon showing five white pips. Designed for use on the app's blue header background (#4C5FD5).</desc>
+
+  <rect x="60" y="40" width="120" height="120" rx="28" fill="#F0508E"/>
+  <circle cx="96" cy="76" r="9" fill="#ffffff"/>
+  <circle cx="144" cy="76" r="9" fill="#ffffff"/>
+  <circle cx="120" cy="100" r="9" fill="#ffffff"/>
+  <circle cx="96" cy="124" r="9" fill="#ffffff"/>
+  <circle cx="144" cy="124" r="9" fill="#ffffff"/>
+
+  <text x="216" y="126" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" fill="#ffffff">TEN<tspan fill="#F0508E">Z</tspan>IES</text>
+</svg>
