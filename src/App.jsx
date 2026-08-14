@@ -86,8 +86,10 @@ export default function App() {
         <p className="subtitle">Match all dice and beat your best time!</p>
         <h1 className="title">Tenzies</h1>
       </header>
+
       <main>
         {gameWon && <Confetti />}
+
         <div aria-live="polite" className="sr-only">
           {gameWon && (
             <p>
@@ -96,14 +98,23 @@ export default function App() {
             </p>
           )}
         </div>
-        <div className="timer-display">
-          {gameStarted && (
-            <span className="timer" aria-live="polite">
-              {formatTime(time)}
-            </span>
-          )}
-          {bestTime !== null && <span className="best-time">Best: {bestTime}s</span>}
+
+        <div className="keeper-display">
+          <div className="best-time">
+            <p className="keeper-subtitle">Best:</p>
+            {bestTime !== null && <p>{bestTime}s</p>}
+          </div>
+          <div className="timer">
+            <p className="keeper-subtitle">Time:</p>
+            {gameStarted && <p aria-live="polite">{formatTime(time)}</p>}
+          </div>
+          <div className="attempt">
+            <p className="keeper-subtitle" aria-live="polite">
+              Attempts:
+            </p>
+          </div>
         </div>
+
         <div className="dice-container">{diceElements}</div>
         <button ref={buttonRef} className="roll-dice" onClick={rollDice}>
           {gameWon ? "New Game" : "Roll"}

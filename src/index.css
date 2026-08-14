@@ -4,8 +4,9 @@
 
 body {
   font-family: Karla, sans-serif;
-  margin: 0;
+  margin: 0 auto;
   background-color: #4C5FD5;
+  max-width: 420px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,7 +42,8 @@ div#root {
 
 main {
   background-color: #F3F0FF;
-  height: 100%;
+  /* height: 100%; */
+  height: 120%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -62,25 +64,60 @@ main {
   text-align: center;
 }
 
-.timer-display {
+.keeper-display {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  max-height: 10rem;
   align-items: center;
-  gap: 2px;
-  min-height: 2.5rem;
-  margin: 8px 0 4px;
+  justify-content: center;
+}
+
+.keeper-subtitle {
+  font-size: .8rem;
+  font-weight: 400;
+  margin: 0 auto;
+  text-align: start;
 }
 
 .timer {
+  flex: 1.5;
   font-size: 2rem;
+  width: 12rem;
   font-weight: bold;
   font-variant-numeric: tabular-nums;
+  background-color: #DB2777;
+  min-height: 8rem;
 }
 
 .best-time {
+  flex: .75;
   font-size: 0.85rem;
   color: #4a4a4a;
   font-variant-numeric: tabular-nums;
+  background-color: #C2410C;
+  height: 6rem;
+}
+
+.attempt {
+  flex: .75;
+  font-size: 0.85rem;
+  background-color: #6D28D9;
+  height: 6rem;
+
+}
+
+.timer, .best-time, .attempt {
+  color: white;
+  border-radius: 16px;
+  padding: 12px 12px;
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timer > p, .best-time > p, .attempt > p {
+  margin: 0 auto;
 }
 
 .dice-container {
@@ -131,6 +168,7 @@ button.roll-dice {
 }
 
 @media (max-width: 480px) {
+
   .dice-container {
     gap: 12px;
     padding-inline: 12px;
@@ -142,7 +180,7 @@ button.roll-dice {
   }
 
   .timer {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   button.roll-dice {
