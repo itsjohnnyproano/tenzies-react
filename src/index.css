@@ -110,12 +110,12 @@ button.roll-dice {
   height: 50px;
   white-space: nowrap;
   width: auto;
-  padding: 6px 21px;
+  padding: 6px 80px;
   border: none;
   border-radius: 1rem;
   background-color: #5035FF;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .sr-only {
@@ -147,6 +147,6 @@ button.roll-dice {
 
   button.roll-dice {
     height: 52px;
-    width: 96%;
+    width: 94%;
   }
 }
