@@ -6,6 +6,7 @@ body {
   font-family: Karla, sans-serif;
   background-color: #4C5FD5;
   max-width: 420px;
+  margin: 0 auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,6 +35,7 @@ header > p {
   margin: 0;
   color: white;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 
 div#root {
@@ -126,10 +128,38 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: .2rem;
 }
 
 .timer > p, .best-time > p, .attempt > p {
   margin: 0 auto;
+}
+
+.dice-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dice-subtitle, .dice-subtitle-2 {
+  text-align: left;
+  margin: 0;
+}
+
+.dice-subtitle {
+  color: #241F45;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.dice-subtitle-2 {
+  color: #8B7FC7;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0 0 20px 0px;
 }
 
 .dice-container {
@@ -150,7 +180,7 @@ button {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   border: none;
-  background-color: white;
+  background-color: #F3F0FF;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -162,9 +192,10 @@ button.roll-dice {
   padding: 6px 80px;
   border: none;
   border-radius: 1rem;
-  background-color: #5035FF;
+  background-color: #241F45;
   color: white;
   font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .sr-only {
@@ -180,10 +211,32 @@ button.roll-dice {
 }
 
 @media (max-width: 480px) {
+  body {
+    margin: revert-rule;
+  }
 
   header {
     margin-top: 2.5rem;
   }
+
+.dice-container-wrapper {
+  padding: 1rem .2rem;
+}
+
+.dice-subtitle {
+  color: #241F45;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 12px;
+
+}
+
+.dice-subtitle-2 {
+  color: #8B7FC7;
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 12px;
+}
 
   .dice-container {
     gap: 12px;
@@ -200,7 +253,7 @@ button.roll-dice {
   }
 
   button.roll-dice {
-    height: 52px;
+    height: 56px;
     width: 94%;
   }
 }
