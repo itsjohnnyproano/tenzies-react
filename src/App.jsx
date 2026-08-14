@@ -20,6 +20,7 @@ export default function App() {
   });
   const [gameStarted, setGameStarted] = useState(false);
   const buttonRef = useRef(null);
+  const idleTimerRef = useRef(null);
 
   const gameWon = dice.every((die) => die.isHeld) && dice.every((die) => die.value === dice[0].value);
 
@@ -53,6 +54,8 @@ export default function App() {
 
       setAttempts((prevAttempts) => prevAttempts + 1);
 
+      resetIdleTimer();
+
       setDice((oldDice) =>
         oldDice.map((die) =>
           die.isHeld
@@ -74,7 +77,12 @@ export default function App() {
   function hold(id) {
     if (!gameStarted) {
       setGameStarted(true);
+      resetIdleTimer(true);
+    } else {
+      resetIdleTimer();
     }
+
+    resetIdleTimer();
 
     const newDice = dice.map((die) => (die.id === id ? { ...die, isHeld: !die.isHeld } : die));
 
@@ -94,12 +102,29 @@ export default function App() {
     setDice(newDice);
   }
 
+  function resetIdleTimer(isStarting = false) {
+    clearTimeout(idleTimerRef.current);
+
+    if ((!gameStarted && !isStarting) || gameWon) return;
+
+    idleTimerRef.current = setTimeout(
+      () => {
+        setGameStarted(false);
+        setTime(0);
+        setAttempts(0);
+        setDice(generateAllNewDice());
+      },
+      2 * 60 * 1000
+    );
+  }
+
   const diceElements = dice.map((dieObj) => (
     <Die key={dieObj.id} value={dieObj.value} isHeld={dieObj.isHeld} hold={() => hold(dieObj.id)} />
   ));
 
   return (
     <>
+      {gameWon && <Confetti recycle={false} numberOfPieces={500} />}
       <header>
         <p className="subtitle">Roll to win!</p>
         <p className="subtitle">
@@ -109,8 +134,6 @@ export default function App() {
       </header>
 
       <main>
-        {gameWon && <Confetti />}
-
         <div aria-live="polite" className="sr-only">
           {gameWon && (
             <p>
